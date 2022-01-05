@@ -22,6 +22,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 //talvez ele tenha mudado o formato por conta da escrita do typescript
-export const auth = firebase.auth();
-export const database = firebase.database();
-
+ const auth = firebase.auth();
+ const database = firebase.database();
+export {firebase,auth,database};

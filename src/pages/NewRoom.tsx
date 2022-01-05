@@ -1,10 +1,14 @@
+import { useContext } from 'react';
+import {Link} from 'react-router-dom';
 import illuminationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import {Button} from '../components/Button' ;
 import '../styles/auth.scss';//so eh usada pela pagina home
+import { AuthContext} from '../App';
 
 export function NewRoom() {
+    const {user, singInWithGoogle } = useContext(AuthContext);
     return (
         <div id="page-auth" >
             <aside>
@@ -24,7 +28,8 @@ export function NewRoom() {
                         <Button type="submit">Criar na sala</Button>
                     </form>
                     <p>
-                        Entrar em uma sala existente <a href="#">clique aqui</a>
+                        Entrar em uma sala existente <Link to="/">clique aqui</Link>
+                        //aprender a usar esse link 
                     </p>
 
                 </div>
