@@ -1,8 +1,9 @@
 
-//import firebase from '../../node_modules/firebase/app';//
+
 import firebase from '../../node_modules/firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
+
 
 
 // TODO: Add SDKs for Firebase products that you want to use
