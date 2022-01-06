@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import {auth, firebase} from '../services/firebase';
+//import {auth, firebase} from '../services/firebase';
 import illuminationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
@@ -13,17 +13,12 @@ export function Home() {
     const navigate = useNavigate();
     const {user, singInWithGoogle} = useContext(AuthContext);
 
-    function handleCreatRoom(){
-        const provider = new firebase.auth.GoogleAuthProvider();
+   async function handleCreatRoom(){
+        if(!user){
+           await singInWithGoogle();
+        }
 
-        auth.signInWithPopup(provider).then(result => {
-            console.log(result);
-
-            //so pode acesar essa tela quem fez o login
-            navigate("/rooms/new");
-        });
-
-       
+        navigate("/rooms/new");
     }
 
     return (
