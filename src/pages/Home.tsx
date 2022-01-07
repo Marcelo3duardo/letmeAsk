@@ -1,27 +1,56 @@
 
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FormEvent, useState } from 'react';
 
 //import {auth, firebase} from '../services/firebase';
 import illuminationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
-import {Button} from '../components/Button' ;
+import { Button } from '../components/Button';
 import '../styles/auth.scss';//so eh usada pela pagina home
 
 import { useAuth } from '../hooks/useauth';
+import { } from '../../node_modules/firebase/database'
+import firebase from 'firebase';
+import { database } from '../services/firebase';
+
 
 
 export function Home() {
     const navigate = useNavigate();
-    const {user, signInWithGoogle} = useAuth();
+    const { user, signInWithGoogle } = useAuth();
+    const [roomCode, setRoomCode] = useState('');
 
-   async function handleCreatRoom(){
-        if(!user){
-        await signInWithGoogle();//retirei o await
+    async function handleCreatRoom() {
+        if (!user) {
+            await signInWithGoogle();//retirei o await
         }
 
         navigate('/rooms/new');
     }
+
+    async function handleJoinRoom(this: any, event: FormEvent) {
+        event.preventDefault();//prevenir o que quando haja o click a pagina nao recarregue
+
+        if (roomCode.trim() == '') {
+            return;
+        }
+        const roomRef = await firebase.database().ref(`rooms/${roomCode}`);
+        roomRef.on('value', (snapshot) => {
+            const existente = snapshot.exists();
+            if (!existente) {
+                console.log("not exists!");
+                return;
+            } else {
+                console.log("exists!");
+
+                navigate(`rooms/${roomCode}`);
+            }
+        })
+   
+    }
+
+
 
     return (
         <div id="page-auth" >
@@ -41,8 +70,13 @@ export function Home() {
                     <div className="separator">
                         ou entre em uma sala
                     </div>
-                    <form >
-                        <input type="text" placeholder="Digite o código da sala" />
+                    <form onSubmit={handleJoinRoom} >
+                        <input
+                            type="text"
+                            placeholder="Digite o código da sala"
+                            onChange={event => setRoomCode(event.target.value)}
+                            value={roomCode}
+                        />
                         <Button type="submit">Entrar na sala</Button>
                     </form>
 
