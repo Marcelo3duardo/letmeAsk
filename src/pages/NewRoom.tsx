@@ -1,4 +1,5 @@
 
+import { FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 import illuminationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
@@ -7,9 +8,27 @@ import { Button } from '../components/Button';
 import '../styles/auth.scss';//so eh usada pela pagina home
 
 import { useAuth } from '../hooks/useauth';
+import { database } from '../services/firebase';
 
 export function NewRoom() {
+    const [newRoom, setNewRoom] = useState('');
     const { user } = useAuth();
+    async function handleCreatRoom(event: FormEvent) {
+        event.preventDefault();
+        if (newRoom.trim() == '') {//esse trim serve para impedir que seja contado espaço vazios 
+            return;
+        }
+
+        const roomRef = database.ref('rooms');
+
+        const firebaseRoom = await roomRef.push({
+            //passando os dados para o base de dados RealTimeDatabase
+            title: newRoom,
+            authorId: user?.id,
+        })
+    }
+
+
     return (
         <div id="page-auth" >
             <aside>
@@ -24,8 +43,13 @@ export function NewRoom() {
                     <h1>{user?.name}</h1>
                     <h2>Crie uma nova sala</h2>
 
-                    <form >
-                        <input type="text" placeholder="Nome da sala" />
+                    <form onSubmit={handleCreatRoom}>
+                        <input
+                            type="text"
+                            placeholder="Nome da sala"
+                            onChange={event => setNewRoom(event.target.value)}
+                            value={newRoom}
+                        />
                         <Button type="submit">Criar na sala</Button>
                     </form>
                     <p>
