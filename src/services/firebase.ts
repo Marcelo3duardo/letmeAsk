@@ -1,8 +1,9 @@
 
 
-import firebase from '../../node_modules/firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/database';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+
 
 
 
@@ -12,7 +13,7 @@ import 'firebase/compat/database';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  authDomain: process.env.REACT_APP_AUTO_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
@@ -22,7 +23,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 //talvez ele tenha mudado o formato por conta da escrita do typescript
  const auth = firebase.auth();
  const database = firebase.database();
 export {firebase,auth,database};
+  

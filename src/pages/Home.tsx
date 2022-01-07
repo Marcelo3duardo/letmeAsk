@@ -17,10 +17,10 @@ export function Home() {
 
    async function handleCreatRoom(){
         if(!user){
-           await signInWithGoogle();
+        await signInWithGoogle();//retirei o await
         }
 
-        navigate("/rooms/new");
+        navigate('/rooms/new');
     }
 
     return (
