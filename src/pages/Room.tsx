@@ -2,12 +2,13 @@ import { FormEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg';
 import { Button } from '../components/Button';
+import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useauth';
 import { database } from '../services/firebase';
 import '../styles/room.scss';
 
-type Question = {
+type QuestionType = {
     id: string;
     author: {
         name: string;
@@ -37,7 +38,7 @@ export function Room() {
     const { user } = useAuth();
     const roomId = useParams<RoomParams>().id as string;
     const [newQuestion, setNewQuestion] = useState('');
-    const [questions, setQuestions] = useState<Question[]>([]);
+    const [questions, setQuestions] = useState<QuestionType[]>([]);
     const [title, setTitle] = useState('');
 
     useEffect(() => {
@@ -56,7 +57,7 @@ export function Room() {
                     isAnswered: value.isAnswered
                 }
             })
-            
+
             setTitle(databaseRoom.title);
             setQuestions(parsedQuestions)
         })
@@ -130,6 +131,17 @@ export function Room() {
                     </div>
 
                 </form>
+                <div className="question-list">
+                    {questions.map(question => {
+                        return (
+                            <Question
+                                key={question.id}//serve para identificar por questão de performance
+                                content={question.content}
+                                author={question.author}
+                            />
+                        );
+                    })}
+                </div>
             </main>
         </div>
     );
