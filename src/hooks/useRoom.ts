@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { database } from "../services/firebase";
+import { useAuth } from "./useauth";
 
 type QuestionType = {
     id: string;
@@ -10,6 +11,9 @@ type QuestionType = {
     content: string;
     isAnswered: boolean;
     isHighlighted: boolean;
+    likeCount:number;
+    hasLiked:boolean;
+
 }
 
 type firebaseQuestions = Record<string, {
@@ -20,10 +24,15 @@ type firebaseQuestions = Record<string, {
     content: string;
     isAnswered: boolean;
     isHighlighted: boolean;
+    likes: Record<string, {
+        authorId: string;
+    }>
+
 }>
-export function useRoom(roomId:string){
+export function useRoom(roomId: string) {
+    const { user } = useAuth();
     const [questions, setQuestions] = useState<QuestionType[]>([]);
-    const [title, setTitle] = useState(''); 
+    const [title, setTitle] = useState('');
 
     useEffect(() => {
         const roomRef = database.ref(`rooms/${roomId}`);
@@ -38,14 +47,22 @@ export function useRoom(roomId:string){
                     content: value.content,
                     author: value.author,
                     isHighlighted: value.isHighlighted,
-                    isAnswered: value.isAnswered
+                    isAnswered: value.isAnswered,
+                    likeCount: Object.values(value.likes ?? {}).length,
+                    hasLiked: Object.values(value.likes ?? {}).some(like => like.authorId == user?.id)
+
+
                 }
             })
 
             setTitle(databaseRoom.title);
-            setQuestions(parsedQuestions)
+            setQuestions(parsedQuestions);
         })
 
-    }, [roomId]);
-    return{questions,title}
+
+        return()=>{
+            roomRef.off('value');
+        }
+    }, [roomId,user?.id]);//use?.id so foi usado para melhor performance
+    return { questions, title }
 }
