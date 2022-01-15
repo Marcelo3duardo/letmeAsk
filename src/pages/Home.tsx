@@ -36,18 +36,23 @@ export function Home() {
             return;
         }
         const roomRef = await firebase.database().ref(`rooms/${roomCode}`);
+        //nao consegui verificar se a sala doi apagada
+
+
         roomRef.on('value', (snapshot) => {
             const existente = snapshot.exists();
             if (!existente) {
-                console.log("not exists!");
+               alert("not exists!");
                 return;
             } else {
-                console.log("exists!");
+                alert("exists!");
 
                 navigate(`rooms/${roomCode}`);
             }
+
+
         })
-   
+
     }
 
 
