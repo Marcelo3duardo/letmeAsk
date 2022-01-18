@@ -42,10 +42,10 @@ export function Home() {
         roomRef.on('value', (snapshot) => {
             const existente = snapshot.exists();
             if (!existente) {
-               alert("not exists!");
+               console.log("not exists!");
                 return;
             } else {
-                alert("exists!");
+                console.log("exists!");
 
                 navigate(`rooms/${roomCode}`);
             }
