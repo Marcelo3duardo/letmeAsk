@@ -9,12 +9,27 @@
     }
 
     &.answered{
-        background:#9999ff;
+        background:#c2c2c2;
+        #imgCheck{
+            color: #835afd;
+            svg path{
+                stroke: #835afd;
+            }
+        }
     }
 
     &.highlighted{
         background: #f4f0ff;
         border:1px solid #835afd;
+        .user-info{
+            >span{
+                color:#1a1a1b;
+            }
+
+        }
+        #imgHighLight{
+            color:#835afd;
+        }
 
     }
 

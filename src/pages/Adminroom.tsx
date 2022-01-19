@@ -96,19 +96,29 @@ export function AdminRoom() {
                                 isAnswered={question.isAnswered}
                                 isHighLighted={question.isHighLighted}
                             >
+                                {!question.isAnswered && (
+                                    /* esse fragmento so eh enxergado pelo java, e n pelo css*/ 
+                                    <>
+                                    
+                                    <button
+                                        id="imgCheck"
+                                        type="button"
+                                        onClick={() => handleCheckQuestion(question.id)}
+                                    >
+                                        <img src={checkImg} alt="marca a pergunta" />
+                                    </button>
+                                    <button
+                                        id="imgHilghLight"
+                                        type="button"
+                                        onClick={() => handleHighLightQuestion(question.id)}
+                                    >
+                                        <img src={answerImg} alt="dar destaque a  pergunta" />
+                                    </button>
+                                </>
+                                )}
+                                
                                 <button
-                                    type="button"
-                                    onClick={() => handleCheckQuestion(question.id)}
-                                >
-                                    <img src={checkImg} alt="marca a pergunta" />
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => handleHighLightQuestion(question.id)}
-                                >
-                                    <img src={answerImg} alt="dar destaque a  pergunta" />
-                                </button>
-                                <button
+                                    id="imgDel"
                                     type="button"
                                     onClick={() => handleDeleteQuestion(question.id)}
                                 >
