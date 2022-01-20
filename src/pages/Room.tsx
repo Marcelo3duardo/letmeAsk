@@ -1,11 +1,13 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg';
+import exitImg from '../assets/images/exit.svg';
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useauth';
 import { useRoom } from '../hooks/useRoom';
+import { useNavigate } from 'react-router-dom';
 import { database } from '../services/firebase';
 import '../styles/room.scss';
 
@@ -23,6 +25,7 @@ export function Room() {
     const roomId = useParams<RoomParams>().id as string;
     const [newQuestion, setNewQuestion] = useState('');
     const { title, questions } = useRoom(roomId);
+    const navigate = useNavigate();
 
 
     async function handLikeQuestions(questionId: string, likeId: string | undefined) {
@@ -74,7 +77,16 @@ export function Room() {
             <header>
                 <div className="content">
                     <img src={logoImg} alt="LetmeAsk" />
-                    <RoomCode code={roomId} />
+                    <div>
+                        <RoomCode code={roomId} />
+                        <button
+                            id="exitRoom"
+                            type="button"
+                            onClick={() => navigate("/")}
+                        >
+                            <img src={exitImg} alt="saida" />
+                        </button>
+                    </div>
                 </div>
             </header>
 

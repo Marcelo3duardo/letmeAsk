@@ -13,6 +13,19 @@
                 max-height: 45px;
             }
 
+            #exitRoom {
+                width: 32px;
+                border:none;
+                background:transparent;
+                > img {
+                    height: 32px;
+                    align-items: center;
+                    margin-left: 15px;
+                    margin-top: 5px;
+                    cursor: pointer;
+                }
+            }
+
             > div {
                 display: flex;
                 gap: 16px;
