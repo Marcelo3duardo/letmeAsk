@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { FormEvent, ReactNode, useState } from 'react';
 import '../styles/questions.scss';
 type QuestionProps = {
     content: string;
@@ -25,7 +25,7 @@ export function Question({
                 <div className="D-like">
                     {children}
                 </div>
-            </footer>
+            </footer>           
 
         </div>
     );

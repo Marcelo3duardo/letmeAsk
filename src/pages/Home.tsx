@@ -7,7 +7,8 @@ import illuminationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 import { Button } from '../components/Button';
-import '../styles/auth.scss';//so eh usada pela pagina home
+//import '../styles/auth.scss';//so eh usada pela pagina home
+import { PageAuth } from '../styles/authCss';
 
 import { useAuth } from '../hooks/useauth';
 import { } from '../../node_modules/firebase/database'
@@ -42,7 +43,7 @@ export function Home() {
         roomRef.on('value', (snapshot) => {
             const existente = snapshot.exists();
             if (!existente) {
-               console.log("not exists!");
+                console.log("not exists!");
                 return;
             } else {
                 console.log("exists!");
@@ -59,34 +60,36 @@ export function Home() {
 
     return (
         <div id="page-auth" >
-            <aside>
-                <img src={illuminationImg} alt="pergunta e respostas" />
-                <strong>Cire salas de Q&amp;A ao-vivo</strong>
-                <p>Tire as duvidas da sua audiência em tempo real</p>
+            <PageAuth>
+                <aside>
+                    <img src={illuminationImg} alt="pergunta e respostas" />
+                    <strong>Cire salas de Q&amp;A ao-vivo</strong>
+                    <p>Tire as duvidas da sua audiência em tempo real</p>
 
-            </aside>
-            <main>
-                <div className="main-content">
-                    <img src={logoImg} alt="letmeAsk" />
-                    <button type="button" onClick={handleCreatRoom} className="creat-room">
-                        <img src={googleIconImg} alt="Logo do google" />
-                        <p>Crie sua sala com o Google</p>
-                    </button>
-                    <div className="separator">
-                        ou entre em uma sala
+                </aside>
+                <main>
+                    <div className="main-content">
+                        <img src={logoImg} alt="letmeAsk" />
+                        <button type="button" onClick={handleCreatRoom} className="creat-room">
+                            <img src={googleIconImg} alt="Logo do google" />
+                            <p>Crie sua sala com o Google</p>
+                        </button>
+                        <div className="separator">
+                            ou entre em uma sala
+                        </div>
+                        <form onSubmit={handleJoinRoom} >
+                            <input
+                                type="text"
+                                placeholder="Digite o código da sala"
+                                onChange={event => setRoomCode(event.target.value)}
+                                value={roomCode}
+                            />
+                            <Button type="submit">Entrar na sala</Button>
+                        </form>
+
                     </div>
-                    <form onSubmit={handleJoinRoom} >
-                        <input
-                            type="text"
-                            placeholder="Digite o código da sala"
-                            onChange={event => setRoomCode(event.target.value)}
-                            value={roomCode}
-                        />
-                        <Button type="submit">Entrar na sala</Button>
-                    </form>
-
-                </div>
-            </main>
+                </main>
+            </PageAuth>
         </div>
     )
 }

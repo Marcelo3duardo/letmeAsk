@@ -1,10 +1,15 @@
-#page-auth {
+import styled from "styled-components";
+
+
+export const PageAuth = styled.div`
+
     display: flex;
     align-items: stretch;
     height: 100vh;
     aside {
         flex: 7;
-        background: #865afd;
+        background: ${props => props.theme.colors.backgroundMenu};
+        //background: #865afd;
         color: #ffffff;
         display: flex;
         flex-direction: column;
@@ -126,20 +131,21 @@
             margin-left: 16px;
         }
     }
-}
 
-@media (max-width: 790px) {
-    #page-auth {
+    @media (max-width: 790px) {
+   
         aside {
             display: none;
         }
 
         main {
-            background: #a381ff
+           background:${props=>props.theme.colors.backCreatRoom};
+            // background: ${props => props.theme.colors.span};
         }
         .separator{
             color: white;
         }
-    }
+    
 
 }
+`;
