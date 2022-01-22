@@ -1,3 +1,7 @@
+import styled from "styled-components";
+
+
+export const QuestionCss = styled.div`
 .question {
     background: #fefefe;
     border-radius: 8px;
@@ -11,16 +15,16 @@
     &.answered{
         background:#c2c2c2;
         #imgCheck{
-            color: #835afd;
+            color: ${props=>props.theme.colors.primary};
             svg path{
-                stroke: #835afd;
+                stroke: ${props=>props.theme.colors.primary};
             }
         }
     }
 
     &.highlighted{
         background: #f4f0ff;
-        border:1px solid #835afd;
+        border:1px solid ${props=>props.theme.colors.primary};
         .user-info{
             >span{
                 color:#1a1a1b;
@@ -28,7 +32,7 @@
 
         }
         #imgHighLight{
-            color:#835afd;
+            color:${props=>props.theme.colors.primary};
         }
 
     }
@@ -58,9 +62,9 @@
                     gap:8px;
 
                     &.liked{
-                        color:#835afd;
+                        color:${props=>props.theme.colors.primary};
                         svg path{
-                            stroke:#835afd;
+                            stroke:${props=>props.theme.colors.primary};
                         }
                     }
                 }
@@ -88,3 +92,4 @@
         }
     }
 }
+`;
