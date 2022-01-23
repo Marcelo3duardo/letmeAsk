@@ -1,10 +1,11 @@
-import 'style-componets';
+import 'style-components';
 
 declare module 'styled-components'{
     export interface DefaultTheme{
-        title:string;
-
+      
         colors:{
+            title:string;
+
             primary:string;
             secondary:string;
             span:string;

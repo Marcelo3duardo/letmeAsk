@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import React,{ FormEvent, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'
 import logoImg from '../assets/images/logo.svg';
 import exitImg from '../assets/images/exit.svg';
@@ -11,7 +11,11 @@ import { useNavigate } from 'react-router-dom';
 import { database } from '../services/firebase';
 import Switch from 'react-switch';
 import { PageRoom } from '../styles/roomScss';
-
+import { ThemeContext } from 'styled-components';
+import { ThemesContext } from '../context/ThemeContext';
+import dark from '../styles/themes/dark';
+import light from '../styles/themes/light';
+//import { toggleTheme } from '../context/ThemeContext';
 
 
 
@@ -21,14 +25,15 @@ type RoomParams = {
 }
 
 export function Room() {
-
+    
     const { user } = useAuth();
     const roomId = useParams<RoomParams>().id as string;
     const [newQuestion, setNewQuestion] = useState('');
     const { title, questions } = useRoom(roomId);
     const navigate = useNavigate();
-
-
+    const { colors } = useContext(ThemeContext);
+    const {theme,setTheme} = useContext(ThemesContext);
+    console.log(theme.colors.title);
     async function handLikeQuestions(questionId: string, likeId: string | undefined) {
         if (likeId) {
             //remove o like 
@@ -100,20 +105,22 @@ export function Room() {
                             {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
                         </div>
                         <Switch
-                            onChange={() => { }}
-                            checked={false}
+                            onChange={()=> {setTheme(theme.colors.title == 'light' ? dark : light)}}
+                            checked={theme.colors.title == 'dark'}
                             checkedIcon={false}
                             height={10}
                             width={40}
-                            onHandleColor='#412D7D'
                             handleDiameter={20}
 
-                            onColor='#835AFD'
+                            offHandleColor={colors.backgroundMenu}
+                            offColor={colors.secondary}
+                            onColor={colors.primary}
+                            onHandleColor={colors.backgroundMenu}
 
 
                         />
-
-
+                       
+                      
                     </div>
 
                     <form onSubmit={handSendQuestion}>

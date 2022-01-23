@@ -4,14 +4,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 import './services/firebase';
-import { GlobalCss } from './styles/global';
+import GlobalStyle from './styles/global';
 
 ReactDOM.render(
 
   <React.StrictMode>
-    <GlobalCss>
-      <App />
-    </GlobalCss>
+    <GlobalStyle />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
