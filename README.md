@@ -1,3 +1,15 @@
+#Sobre o projeto
+Esse projeto é um site de salas de  perguntas!
+Foi feito com base no NLW 6 da  Rocketseat.
+Foi meu primeiro projeto e contato com o React.js e o firebase.
+
+##Aprendizado
+-> React.js
+-> Firebase
+-> styled-components
+-> ontext
+-> ocalSorage
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
