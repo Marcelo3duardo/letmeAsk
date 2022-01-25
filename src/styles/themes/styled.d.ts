@@ -27,6 +27,7 @@ declare module 'styled-components' {
 
             logoImg:string;
 
+            backGoogle: string;
         }
     }
 }

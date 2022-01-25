@@ -12,8 +12,8 @@ export default {
         background: '#384D59',
         text: '#f3f3f3',
 
-        backgroundMenu: '#101',
-        backCreatRoom: '#013',
+        backgroundMenu: '#291840',
+        backCreatRoom: '#533182',
 
         //questions
         backDesmarcado: '#303840',
@@ -27,6 +27,10 @@ export default {
         textBody: '#C3C3D4',
 
         //logoImg
-        logoImg: '#A1A69C'
+        logoImg: '#A1A69C',
+
+
+        //loginGoogle
+        backGoogle: '#AB3227'
     }
 }

@@ -13,7 +13,7 @@ export default {
         text: '#222',
 
         backgroundMenu: '#6949C9',
-        backCreatRoom: '#BCA7FD',
+        backCreatRoom: '#F7F5FC',
 
         //questions
         backDesmarcado: '#c2c2c2',
@@ -25,9 +25,9 @@ export default {
         backBody: '#f1f1f1',
         textBody: ' #29292e',
 
-        logoImg: 'transparent'
+        logoImg: 'transparent',
 
-
+        backGoogle:  '#ea4335',
 
     }
 }

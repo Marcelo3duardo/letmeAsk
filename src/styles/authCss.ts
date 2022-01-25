@@ -35,7 +35,7 @@ export const PageAuth = styled.div`
 
     main {
         flex: 8;
-
+        background:${props => props.theme.colors.backCreatRoom};
         padding: 0 32px;
         display: flex;
         align-items: center;
@@ -49,6 +49,7 @@ export const PageAuth = styled.div`
         max-width: 320px;
         align-items: stretch;
         text-align: center;
+      
 
         > img {
             align-self: center;
@@ -88,7 +89,7 @@ export const PageAuth = styled.div`
         height: 50px;
         border-radius: 6px;
         font-weight: 500;
-        background: #ea4335;
+        background: ${props => props.theme.colors.backGoogle};
         color: #fff;
 
         display: flex;
@@ -139,7 +140,7 @@ export const PageAuth = styled.div`
         }
 
         main {
-           background:${props=>props.theme.colors.backCreatRoom};
+           background:${props => props.theme.colors.backCreatRoom};
             // background: ${props => props.theme.colors.span};
         }
         .separator{
