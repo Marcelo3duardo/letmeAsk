@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const QuestionCss = styled.div`
 .question {
-    background: #fefefe;
+    background:${props => props.theme.colors.background};
+    margin-top:7px;
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
     padding: 24px;
@@ -13,32 +14,35 @@ export const QuestionCss = styled.div`
     }
 
     &.answered{
-        background:#c2c2c2;
+        background:${props => props.theme.colors.backDesmarcado};
         #imgCheck{
-            color: ${props=>props.theme.colors.primary};
+            color: ${props => props.theme.colors.primary};
             svg path{
-                stroke: ${props=>props.theme.colors.primary};
+                stroke: ${props => props.theme.colors.primary};
             }
         }
+       
+                color:${props => props.theme.colors.likeOff};
+        
     }
 
     &.highlighted{
-        background: #f4f0ff;
-        border:1px solid ${props=>props.theme.colors.primary};
+        background:${props => props.theme.colors.backHighlighted};
+        border:2px solid ${props => props.theme.colors.primary};
         .user-info{
             >span{
-                color:#1a1a1b;
+                color:${props => props.theme.colors.textQuestion};
             }
 
         }
         #imgHighLight{
-            color:${props=>props.theme.colors.primary};
+            color:${props => props.theme.colors.primary};
         }
 
     }
 
     p {
-        color: #29292e;
+        color: ${props => props.theme.colors.textQuestion};
     }
 
     footer {
@@ -58,13 +62,13 @@ export const QuestionCss = styled.div`
                 &.like-button {
                     display: flex;
                     align-items: flex-end;
-                    color:#737380;
+                    color:${props => props.theme.colors.likeOff};
                     gap:8px;
 
                     &.liked{
-                        color:${props=>props.theme.colors.primary};
+                        color:${props => props.theme.colors.primary};
                         svg path{
-                            stroke:${props=>props.theme.colors.primary};
+                            stroke:${props => props.theme.colors.primary};
                         }
                     }
                 }

@@ -9,7 +9,7 @@ export const ButtonCss = styled.div`
         border-radius:6px;
         font-weight:500;
         background:${props=>props.theme.colors.primary};
-        color: ${props=>props.theme.colors.background};
+        color: ${props=>props.theme.colors.text};
         padding:0 32px;
 
         display: flex;

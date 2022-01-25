@@ -12,8 +12,15 @@ header {
         display: flex;
         justify-content: space-between;
 
-        > img {
+        .logoImg {
             max-height: 45px;
+            
+            svg {
+                max-height:60px;
+                path{
+                stroke: ${props => props.theme.colors.logoImg};
+                }
+            }
         }
 
         #exitRoom {
@@ -56,7 +63,7 @@ main {
             h1 {
                 font-family: "Poppins", sans-serif;
                 font-size: 24px;
-                color: #29292e;
+                color: ${props => props.theme.colors.text};
             }
 
             > span {

@@ -1,19 +1,32 @@
-export default{
-    
+export default {
+    title: 'dark',
 
-    colors:{
-        title:'dark',
-        primary:'#835AFD',
-        secondary:'#574',
-        
-        span:'#8FC',
-        spanText:'#fff',
+    colors: {
 
-        background:'#123',
-        text:'#f3f3f3',
+        primary: '#835AFD',
+        secondary: '#574',
 
-        backgroundMenu:'#101',
-        backCreatRoom:'#013'
+        span: '#9B5CF2',
+        spanText: '#fff',
 
+        background: '#384D59',
+        text: '#f3f3f3',
+
+        backgroundMenu: '#101',
+        backCreatRoom: '#013',
+
+        //questions
+        backDesmarcado: '#303840',
+        backHighlighted: '#392259',
+        likeOff: '#C1D4D9',
+        textQuestion:'#f3f3f3',
+
+
+        //body
+        backBody: '#1A1E26',
+        textBody: '#C3C3D4',
+
+        //logoImg
+        logoImg: '#A1A69C'
     }
 }

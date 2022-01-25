@@ -32,6 +32,7 @@ export const RoomCodeCss = styled.div`
             width: 240px;
             font-size: 14px;
             font-weight: 500;
+            color: ${props => props.theme.colors.text};
         }
 
         img {

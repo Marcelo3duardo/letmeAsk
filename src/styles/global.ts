@@ -1,14 +1,15 @@
 
 import { createGlobalStyle } from "styled-components";
-export default createGlobalStyle `
+import styled from "styled-components";
+export default createGlobalStyle  `
 *{
 margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
 body{
-    background: #f8f8f8;
-    color: #29292e;
+    background:  ${(props) => props.theme.colors.backBody};
+    color: ${(props) => props.theme.colors.textBody};
 }
 
 body, input, button, textarea{
