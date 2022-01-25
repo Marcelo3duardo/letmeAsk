@@ -110,7 +110,7 @@ export const PageAuth = styled.div`
 
     .separator {
         font-size: 14px;
-        >p{
+        p:first-of-type{
             color: ${props=> props.theme.colors.textBody};
         }
        
