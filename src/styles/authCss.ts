@@ -110,7 +110,10 @@ export const PageAuth = styled.div`
 
     .separator {
         font-size: 14px;
-        color: #a8a8b3;
+        >p{
+            color: ${props=> props.theme.colors.textBody};
+        }
+       
 
         margin: 32px 0;
         display: flex;

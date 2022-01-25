@@ -75,7 +75,7 @@ export function Home() {
                             <p>Crie sua sala com o Google</p>
                         </button>
                         <div className="separator">
-                            ou entre em uma sala
+                            <p>ou entre em uma sala</p>
                         </div>
                         <form onSubmit={handleJoinRoom} >
                             <input
