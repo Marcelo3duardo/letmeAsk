@@ -41,6 +41,7 @@ export function Room() {
     async function handLikeQuestions(questionId: string, likeId: string | undefined) {
         if (likeId) {
             //remove o like 
+           
             await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove()
 
         } else {
