@@ -34,6 +34,9 @@ export function useRoom(roomId: string) {
     const [questions, setQuestions] = useState<QuestionType[]>([]);
     const [title, setTitle] = useState('');
 
+    
+    
+
     useEffect(() => {
         const roomRef = database.ref(`rooms/${roomId}`);
 
@@ -63,6 +66,7 @@ export function useRoom(roomId: string) {
         return()=>{
             roomRef.off('value');
         }
-    }, [roomId,user?.id]);//use?.id so foi usado para melhor performance
+    }, [roomId,user?.id]);//use?.id so foi usado para melhor performance 
+    
     return { questions, title }
 }
