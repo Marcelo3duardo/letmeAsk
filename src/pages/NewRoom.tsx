@@ -9,11 +9,14 @@ import { Button } from '../components/Button';
 import { PageAuth } from '../styles/authCss';
 import { useAuth } from '../hooks/useauth';
 import { database } from '../services/firebase';
+import firebase from 'firebase';
+
+
 
 export function NewRoom() {
     const navigate = useNavigate();
     const [newRoom, setNewRoom] = useState('');
-    const { user } = useAuth();
+    const { user,Desligar } = useAuth();
     async function handleCreatRoom(event: FormEvent) {
         event.preventDefault();
         if (newRoom.trim() == '') {//esse trim serve para impedir que seja contado espaço vazios 
@@ -27,10 +30,18 @@ export function NewRoom() {
             title: newRoom,
             authorId: user?.id,
         })
-        navigate(`/rooms/${firebaseRoom.key}`);
+        navigate(`/admin/rooms/${firebaseRoom.key}`);
         //sala criada a parti do id
     }
 
+/*
+    async function Desligar() {
+        const desligar = await firebase.auth().signOut();
+        //tem que recarregar a pagina
+        navigate(`/`);
+    }
+
+*/
 
 
     return (
@@ -47,6 +58,13 @@ export function NewRoom() {
                     <div className="main-content">
                         <img src={logoImg} alt="letmeAsk" />
                         <h1>{user?.name}</h1>
+
+                        <Button
+                            id="desconectar"
+                            type="submit"
+                            onClick={ Desligar}
+                        > Desconectar </Button>
+
                         <h2>Crie uma nova sala</h2>
 
                         <form onSubmit={handleCreatRoom}>

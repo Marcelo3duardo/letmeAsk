@@ -12,10 +12,7 @@ import { database } from '../services/firebase';
 import Switch from 'react-switch';
 import { PageRoom } from '../styles/roomScss';
 import { ThemeContext } from 'styled-components';
-import { ThemesContext } from '../context/ThemeContext';
-import dark from '../styles/themes/dark';
-import light from '../styles/themes/light';
-//import { toggleTheme } from '../context/ThemeContext';
+
 import { useTheme } from '../context/Theme';
 
 
@@ -79,7 +76,7 @@ export function Room() {
         await database.ref(`rooms/${roomId}/questions`).push(question);
 
 
-        setNewQuestion('');
+        setNewQuestion('');//depois que a mensagem eh enviada ela eh apagada
     }
 
 

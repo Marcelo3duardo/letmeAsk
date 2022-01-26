@@ -11,7 +11,7 @@ type QuestionProps = {
     isHighLighted?: boolean;
 }
 
-export function Question({
+export function Resposta({
     content, author, children, isAnswered = false, isHighLighted = false
 }: QuestionProps) {
     return (
@@ -28,10 +28,6 @@ export function Question({
                             {children}
                         </div>
                     </footer>
-                <div className="Resposta">
-                   
-                </div>
-                Resposta
                 </div>
             </QuestionCss>
         </div>

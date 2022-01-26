@@ -1,5 +1,7 @@
 import React from "react";
 import { createContext, ReactNode, useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import { auth, firebase } from "../services/firebase";
 
 type User = {
@@ -11,6 +13,7 @@ type User = {
 type AuthContextType = {
   user: User | undefined;
   signInWithGoogle: () => Promise<void>;
+  Desligar:() => {};
 }
 
 type AuthContextProviderProps = {
@@ -19,8 +22,12 @@ type AuthContextProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextType);
 
+
+
+
 export function AuthContextProvider(props: AuthContextProviderProps) {
   const [user, setUser] = useState<User>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -44,6 +51,12 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }, [])
 
+  async function Desligar() {
+    const desligar = await firebase.auth().signOut();
+    //tem que recarregar a pagina
+    navigate('/');
+  }
+
   async function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();//alterei !!!!
 
@@ -64,8 +77,14 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }
 
+ 
+
+
+ 
+
+
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, signInWithGoogle, Desligar }}>
       {props.children}
     </AuthContext.Provider>
   );

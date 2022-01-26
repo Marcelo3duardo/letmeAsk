@@ -61,6 +61,15 @@ export const PageAuth = styled.div`
             font-family: "Poppins", sans-serif;
         }
 
+            
+         #desconectar{
+            background: #123564;
+            display: flex;
+            transform: translateX(50%);
+            height:30px;
+        }
+                
+
         form {
             input {
                 height: 50px;
@@ -111,7 +120,7 @@ export const PageAuth = styled.div`
     .separator {
         font-size: 14px;
         p:first-of-type{
-            color: ${props=> props.theme.colors.textBody};
+            color: ${props => props.theme.colors.textBody};
         }
        
 
