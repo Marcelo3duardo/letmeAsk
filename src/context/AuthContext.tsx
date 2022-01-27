@@ -55,6 +55,8 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     const desligar = await firebase.auth().signOut();
     //tem que recarregar a pagina
     navigate('/');
+
+    window.location.reload();
   }
 
   async function signInWithGoogle() {
